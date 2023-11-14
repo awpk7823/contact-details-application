@@ -1,0 +1,13 @@
+.center{
+    text-align: center;
+}
+
+.welcomeButton{
+    width:150px;
+    margin: 5%;
+    padding: 3%;
+}
+
+#heading{
+    margin-top: 10%;
+}

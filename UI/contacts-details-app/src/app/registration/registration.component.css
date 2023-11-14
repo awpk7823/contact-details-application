@@ -1,0 +1,16 @@
+small{
+    padding: 1%;
+    background-color: rgb(252, 218, 218);
+    color:rgb(255, 1, 1);
+}
+
+#errorAlert{
+    color:white;
+    background-color: red;
+    width: 100%;
+    font-size: larger;
+}
+
+.container-fluid{
+    padding: 0%;
+}

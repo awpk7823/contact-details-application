@@ -1,0 +1,63 @@
+
+    <div class="container-fluid full-height">
+        <div class="row full-height">
+            <!--LHS-->
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-10"><router-outlet></router-outlet></div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+            
+            <!--RHS-->       
+            <div class='col-sm-8'>
+                <div class="center">
+                    <h2 class="center text-info">Your contacts</h2>
+                </div>
+                <div *ngIf="cardsMessage != ''" class="center">
+                    <h4 id="message" class="text-danger">{{cardsMessage}}</h4>
+                    <img src="/assets/img/sad.png" alt="sadImage" width="100px"/>
+                </div>
+                <!--Cards start here-->
+                <div class="container-fluid mt-4">
+                    <div class="row justify-content-center">
+                        <div *ngFor="let contact of contactsList">
+                            <div class="col-auto mb-3">
+                                <div class="card" style="width: 25rem;">
+                                    <div class="card-header">
+                                        <span class="text-info">{{contact.name}}</span>
+                                        &nbsp;
+                                        <span *ngIf="contact.type=='Professional'" class="badge badge-primary">{{contact.type}}</span>
+                                        <span *ngIf="contact.type=='Personal'" class="badge badge-dark">{{contact.type}}</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <fa-icon [icon]="faEnvelopeOpen"></fa-icon>&nbsp;{{contact.email}}
+                                        <br/>
+                                        <fa-icon [icon]="faPhone"></fa-icon>&nbsp;{{contact.phone}}
+                                        <br/>
+                                        <button class="btn float-right btn-secondary" [routerLink]="['editContact' , {name:contact.name, type: contact.type, phone:contact.phone, email:contact.email}]">Edit</button>
+                                        <button class="btn float-right btn-danger" (click)="deleteContact(contact)" data-toggle="modal" data-target="#exampleModalCenter">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h1 class="modal-title" id="modal-basic-title">Woohoo!!</h1>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Your ride has been created successfully!!
+        </div>
+        <div class="modal-footer">
+        </div>
+      </ng-template>

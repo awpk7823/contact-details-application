@@ -1,0 +1,15 @@
+.backArrow{
+    font-size: xx-large;
+}
+.center{
+    text-align: center;
+}
+html, body {
+    height: 100%;
+}
+.full-height {
+    height: 90%;
+}
+.mandatory{
+    color: red;
+}

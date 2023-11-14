@@ -1,0 +1,38 @@
+    <form [formGroup]="addContactForm" (ngSubmit)="addContact()">
+        <div class="center">
+            <h2 class="center text-info">Add new contact</h2>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label for="exampleInputName1">Name</label><span class="mandatory">*</span>
+            <input type="text" formControlName="name" class="form-control" id="exampleInputName1" placeholder="Enter name">
+            <small *ngIf="addContactForm.get('name')?.dirty && addContactForm.get('name')?.invalid" class="form-text text-danger">Please enter your name</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label><span class="mandatory">*</span>
+            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a valid email">
+            <small *ngIf="addContactForm.get('email')?.dirty && addContactForm.get('email')?.invalid" class="form-text text-danger">Please enter a valid email</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPhone1">Phone</label><span class="mandatory">*</span>
+            <input type="text" formControlName="phone" class="form-control" id="exampleInputPhone1" placeholder="Enter phone number">
+            <small *ngIf="addContactForm.get('phone')?.dirty && addContactForm.get('phone')?.invalid" class="form-text text-danger">Phone number should be 10 digits long</small>
+        </div>
+        <label for="flexRadioDefault">Contact Type</label><span class="mandatory">*</span>
+        <div class="form-group center">
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" class="form-control" formControlName="type" name="type" value="Personal" required>Personal
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" class="form-control" formControlName="type" name="type" value="Professional" required>Professional
+                </label>
+            </div>
+        </div>
+        <br/>
+        <div class="center">
+            <button type="submit"[disabled]="!addContactForm.valid" class="btn btn-info btn-block">Add</button>
+        </div>
+    </form>
